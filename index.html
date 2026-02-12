@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Gracias por Su Liderazgo</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #00B5AD, #003D3D);
+    color: white;
+    text-align: center;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 120px;
+}
+
+h1 {
+    margin-top: 90px;
+    font-size: 42px;
+    letter-spacing: 1px;
+}
+
+.subtitulo {
+    font-size: 20px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.botones {
+    margin-top: 40px;
+}
+
+button {
+    padding: 14px 28px;
+    margin: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    background-color: #00F2EA;
+    color: #003D3D;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+}
+
+button:hover {
+    background-color: #00B5AD;
+    transform: scale(1.08);
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.5);
+}
+
+.contenido {
+    display: none;
+    margin-top: 40px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* 🔥 IMÁGENES MÁS GRANDES */
+.contenido img {
+    width: 450px;
+    max-width: 95%;
+    border-radius: 22px;
+    margin: 20px;
+    box-shadow: 0px 0px 35px rgba(0,0,0,0.6);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contenido img:hover {
+    transform: scale(1.08);
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+}
+
+/* VIDEO */
+video {
+    max-width: 85%;
+    border-radius: 25px;
+    margin-top: 25px;
+    box-shadow: 0px 0px 35px rgba(0,0,0,0.7);
+}
+
+p {
+    max-width: 850px;
+    margin: 20px auto;
+    font-size: 19px;
+    line-height: 1.7;
+    padding: 0 20px;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(15px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 30px;
+        margin-top: 70px;
+    }
+
+    .contenido img {
+        width: 95%;
+    }
+
+    button {
+        width: 80%;
+        max-width: 300px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<img src="logo.png" class="logo">
+
+<h1>Gracias por Todo</h1>
+<p class="subtitulo">Hoy celebramos el tiempo, el liderazgo y los momentos compartidos.</p>
+
+<div class="botones">
+    <button onclick="mostrar('liderazgo')">Su Liderazgo</button>
+    <button onclick="mostrar('equipo')">Nuestro Equipo</button>
+    <button onclick="mostrar('momentos')">Momentos Compartidos</button>
+    <button onclick="mostrar('video')">Reviviendo el Evento</button>
+</div>
+
+<!-- SECCIÓN 1 -->
+<div id="liderazgo" class="contenido">
+    <p>
+        Su liderazgo dejó huella en cada uno de nosotros.
+        Nos enseñó a apuntar más alto, a trabajar con propósito
+        y a mantenernos unidos incluso en los retos más grandes.
+    </p>
+    <img src="album/foto3.jpeg">
+    <img src="album/foto6.jpeg">
+    <img src="album/foto4.jpeg">
+</div>
+
+<!-- SECCIÓN 2 -->
+<div id="equipo" class="contenido">
+    <p>
+        Más que un jefe, fue parte fundamental del equipo.
+        Nos impulsó, nos escuchó y creyó en nuestras capacidades.
+        Eso no se olvida.
+    </p>
+    <img src="album/foto1.jpeg">
+    <img src="album/foto7.jpeg">
+    <img src="album/foto8.jpeg">
+    <img src="album/foto11.jpeg">
+    <img src="album/foto12.jpeg">
+</div>
+
+<!-- SECCIÓN 3 -->
+<div id="momentos" class="contenido">
+    <p>
+        Aquí están algunos de los momentos que construimos juntos.
+        Cada logro, cada risa y cada desafío superado forman parte
+        de una etapa que siempre recordaremos con orgullo.
+    </p>
+    <img src="album/foto2.jpeg">
+    <img src="album/foto5.jpeg">
+    <img src="album/foto9.jpeg">
+    <img src="album/foto10.jpeg">    
+</div>
+
+<!-- SECCIÓN VIDEO -->
+<div id="video" class="contenido">
+    <p>
+        Este fue uno de los eventos que vivimos como equipo.
+        Un reflejo del compromiso, la energía y la unión que
+        se construyeron bajo su liderazgo.
+    </p>
+    <video id="videoEvento" controls>
+        <source src="video.mp4" type="video/mp4">
+        Tu navegador no soporta video.
+    </video>
+</div>
+
+<!-- MÚSICA -->
+<audio id="musicaFondo" autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    function mostrar(id) {
+    
+        const musica = document.getElementById("musicaFondo");
+        const video = document.getElementById("videoEvento");
+    
+        // Ocultar todas las secciones
+        document.querySelectorAll('.contenido').forEach(seccion => {
+            seccion.style.display = "none";
+        });
+    
+        // Mostrar sección seleccionada
+        document.getElementById(id).style.display = "block";
+    
+        if(id === "video"){
+            musica.pause();
+            video.currentTime = 0;
+            video.play(); // 🔥 inicia automáticamente
+        } else {
+            musica.play();
+            if(video){
+                video.pause();
+                video.currentTime = 0;
+            }
+        }
+    }
+    </script>
+   
+
+</body>
+</html>
